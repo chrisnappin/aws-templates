@@ -1,0 +1,19 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "A simple EC2 instance",
+	"Resources" : {
+		"Ec2Instance" : {
+			"Type" : "AWS::EC2::Instance",
+			"Properties" : {
+				"ImageId" : "ami-d41d58a7",
+				"InstanceType": "t2.micro",
+				"KeyName" : "cjn-aws-key-pair",
+				 "SecurityGroups" : [ "allow-incoming-ssh" ],
+				"Tags" : [ {
+					 "Key" : "Name",
+					 "Value" : "MySimpleInstance"
+				 } ]
+			}
+		}
+	}
+}
