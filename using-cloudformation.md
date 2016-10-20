@@ -20,8 +20,8 @@ And for full details for each action, see:
 _(see events to view progress)_
     
 ##View stack events
-    aws cloudformation describe-stack-events --stack-name MyStackName
-_(lists latest events first, such as start up/shut down)_
+    aws cloudformation describe-stack-events --stack-name MyStackName --max-items <n>
+_(lists latest <n> events first, such as start up/shut down)_
 
 ##View stack resources
     aws cloudformation describe-stack-resources --stack-name MyStackName
