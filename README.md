@@ -10,3 +10,4 @@ I primarily put these together as part of studying for the AWS Solution Architec
 ##Templates
 
 * [Basic Standalone Server](basic-standalone-server/index.md)
+* [S3 Website](s3-website/index.md)
