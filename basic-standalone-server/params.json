@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "tagName",
+        "ParameterValue": "example1"
+    },
+    {
+        "ParameterKey": "amiId",
+        "ParameterValue": "ami-d41d58a7"
+    },
+    {
+        "ParameterKey": "instanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "keyName",
+        "ParameterValue": "cjn-aws-key-pair"
+    }
+]

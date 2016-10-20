@@ -1,19 +1,52 @@
 {
 	"AWSTemplateFormatVersion" : "2010-09-09",
-	"Description" : "A simple EC2 instance",
-	"Resources" : {
+	"Description" : "A basic standalone EC2 instance",
+    "Parameters" : {
+        "tagName" : {
+            "Description" : "The EC2 instance tag name",
+            "Type" : "String"
+        },
+        "amiId" : {
+            "Description" : "The EC2 AMI ID to use for the instance",
+            "Type" : "String"
+        },
+        "instanceType" : {
+            "Description" : "The EC2 Instance type to use",
+            "Type" : "String",
+            "Default" : "t2.micro"
+        },
+        "keyName" : {
+            "Description" : "The EC2 Key Pair to allow SSH access to the instance",
+            "Type" : "AWS::EC2::KeyPair::KeyName"
+        }
+    },
+    "Resources" : {
 		"Ec2Instance" : {
 			"Type" : "AWS::EC2::Instance",
 			"Properties" : {
-				"ImageId" : "ami-d41d58a7",
-				"InstanceType": "t2.micro",
-				"KeyName" : "cjn-aws-key-pair",
-				 "SecurityGroups" : [ "allow-incoming-ssh" ],
+				"ImageId" : {"Ref" : "amiId"},
+				"InstanceType": {"Ref" : "instanceType"},
+				"KeyName" : {"Ref" : "keyName"},
+				"SecurityGroups" : [ {"Ref" : "InstanceSecurityGroup"} ],
 				"Tags" : [ {
 					 "Key" : "Name",
-					 "Value" : "MySimpleInstance"
+					 "Value" : {"Ref" : "tagName"}
 				 } ]
 			}
-		}
+		},
+		"InstanceSecurityGroup" : {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Enable public SSH access",
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "22",
+                        "ToPort": "22",
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ]
+            }
+        }
 	}
 }

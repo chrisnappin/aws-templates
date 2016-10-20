@@ -1,10 +1,22 @@
 #Using Cloud Formation
 
+For a list of possible actions see:
+
+    aws cloudformation help
+    
+And for full details for each action, see:
+
+    aws cloudformation <action> help
+    
 ##Validate a JSON template
     aws cloudformation validate-template --template-body file://template.json
     
+##List all active stacks
+    aws cloudformation describe-stack
+    
 ##Create a stack
-    aws cloudformation create-stack --template-body file://template.json --stack-name MyStackName
+    aws cloudformation create-stack --template-body file://template.json --stack-name MyStackName \
+        --parameters file://parameters.json
 _(see events to view progress)_
     
 ##View stack events
