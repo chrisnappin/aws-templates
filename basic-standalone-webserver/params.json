@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "tagName",
+        "ParameterValue": "web1"
+    },
+    {
+        "ParameterKey": "subnetBlock",
+        "ParameterValue": "10.0.3.0/24"
+    },
+    {
+        "ParameterKey": "amiId",
+        "ParameterValue": "ami-7e1b500d"
+    },
+    {
+        "ParameterKey": "instanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "keyName",
+        "ParameterValue": "cjn-aws-key-pair"
+    }
+]

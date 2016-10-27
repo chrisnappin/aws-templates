@@ -12,7 +12,7 @@ And for full details for each action, see:
     aws cloudformation validate-template --template-body file://template.json
     
 ##List all active stacks
-    aws cloudformation describe-stack
+    aws cloudformation describe-stacks
     
 ##Create a stack
     aws cloudformation create-stack --template-body file://template.json --stack-name MyStackName \

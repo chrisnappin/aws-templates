@@ -9,5 +9,6 @@ I primarily put these together as part of studying for the AWS Solution Architec
 
 ##Templates
 
-* [Basic Standalone Server](basic-standalone-server/index.md)
-* [S3 Website](s3-website/index.md)
+* [Basic Standalone Server](basic-standalone-server/index.md) (using CloudFormation)
+* [S3 Website](s3-website/index.md) (using CloudFormation)
+* [Basic Standalone Web Server](basic-standalone-webserver/index.md) (using Packer, Puppet and CloudFormation)
