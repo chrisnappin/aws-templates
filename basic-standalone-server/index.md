@@ -4,7 +4,7 @@ A single EC2 server instance, located in a new VPC (with gateway and internet ro
 
 The instance has a security group that only allows incoming SSH traffic, no other incoming traffic.
 
-* [basic-standalone-server.json](basic-standalone-server.json)
+* [template.json](template.json)
 * [params.json](params.json)
 
 Template parameters are:

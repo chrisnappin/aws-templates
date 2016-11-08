@@ -12,8 +12,9 @@ This uses the **amazon-ebs** builder, starting from the Amazon Linux AMI, and tw
 
 *  **shell** - runs the [install_puppet.sh](install_puppet.sh) script to install Puppet
 * **puppet-masterless** - installs the nginx module using Puppet (in local mode)
-    * [puppet/manifests/site.pp](puppet/manifests/site.pp)
-    * [puppet/modules/nginx/manifests/init.pp](puppet/modules/nginx/manifests/init.pp)
+    * [puppet/manifests/site.pp](puppet/manifests/site.pp) - installs the "nginx" puppet module
+    * [puppet/modules/nginx/manifests/init.pp](puppet/modules/nginx/manifests/init.pp) - the "nginx" puppet module
+    * [puppet/modules/nginx/files/index.html](puppet/modules/nginx/files/index.html) - example static content (installed as /usr/share/ngingx/html/index.html)
   
 Run packer as follows:
 
@@ -23,7 +24,7 @@ _(make a note of the resulting AMI ID)_
 
 ##Deploy the new EC2 instance
 
-* [basic-standalone-webserver.json](basic-standalone-webserver.json)
+* [template.json](template.json)
 * [params.json](params.json)
 
 Template parameters are:
