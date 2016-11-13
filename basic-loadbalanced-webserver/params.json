@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "amiId",
+        "ParameterValue": "ami-051b4d76"
+    },
+    {
+        "ParameterKey": "instanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "keyName",
+        "ParameterValue": "cjn-aws-key-pair"
+    }
+]

@@ -1,0 +1,64 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "A basic load balanced EC2 webserver cluster",
+    "Parameters" : {
+        "amiId" : {
+            "Description" : "The EC2 AMI ID to use for the instance",
+            "Type" : "String"
+        },
+        "instanceType" : {
+            "Description" : "The EC2 Instance type to use",
+            "Type" : "String",
+            "Default" : "t2.micro"
+        },
+        "keyName" : {
+            "Description" : "The EC2 Key Pair to allow SSH access to the instance",
+            "Type" : "AWS::EC2::KeyPair::KeyName"
+        }
+    },
+    "Resources" : {
+        "WebServerLaunchConfig" : {
+            "Type" : "AWS::AutoScaling::LaunchConfiguration",
+            "Properties" : {
+                "ImageId" : {"Ref" : "amiId"},
+                "InstanceType": {"Ref" : "instanceType"},
+                "KeyName" : {"Ref" : "keyName"},
+                "SecurityGroupIds" : [ {"Fn::GetAtt" : ["WebServerSecurityGroup", "GroupId"]} ],
+                "Tags" : [ {
+                    "Key" : "Name",
+                    "Value" : "LoadBalancedWebServer"
+                } ]
+            }
+        },
+		"WebServerSecurityGroup" : {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Enable public SSH and Web access",
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "0.0.0.0/0"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "80",
+                        "ToPort" : "80",
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ]
+            }
+        },
+        "WebServerAutoScalingGroup" : {
+            "Type" : "AWS::AutoScaling::AutoScalingGroup",
+            "Properties" : {
+                "AvailabilityZones" : ["eu-west-1a", "eu-west-1b", "eu-west-1c"],
+                "LaunchConfigurationName" : { "Ref" : "WebServerLaunchConfig" },
+                "MinSize" : "1",
+                "MaxSize" : "1",
+                "DesiredCapacity" : "1"
+            }
+        }
+    }
+}
