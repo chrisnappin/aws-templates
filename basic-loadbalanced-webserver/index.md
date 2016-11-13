@@ -1,8 +1,6 @@
 #Basic Load Balanced Web Server
 
-Includes:
-
-* A CloudFormation template to deploy the [basic-standalone-webserver](../basic-standalone-webserver) AMI as a set of new EC2 instances in an auto-scaling group, located in the default VPC of 2 AZs.
+A CloudFormation template to deploy the [basic-standalone-webserver](../basic-standalone-webserver/index.md) AMI as a set of new EC2 instances in an auto-scaling group, located in the default VPC of 3 AZs.
 (TODO: behind an ELB)
 
 ##Building the AMI
