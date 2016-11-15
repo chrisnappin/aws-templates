@@ -23,11 +23,7 @@
                 "ImageId" : {"Ref" : "amiId"},
                 "InstanceType": {"Ref" : "instanceType"},
                 "KeyName" : {"Ref" : "keyName"},
-                "SecurityGroupIds" : [ {"Fn::GetAtt" : ["WebServerSecurityGroup", "GroupId"]} ],
-                "Tags" : [ {
-                    "Key" : "Name",
-                    "Value" : "LoadBalancedWebServer"
-                } ]
+                "SecurityGroups" : [ {"Ref" : "WebServerSecurityGroup"} ]
             }
         },
 		"WebServerSecurityGroup" : {
@@ -57,7 +53,12 @@
                 "LaunchConfigurationName" : { "Ref" : "WebServerLaunchConfig" },
                 "MinSize" : "1",
                 "MaxSize" : "1",
-                "DesiredCapacity" : "1"
+                "DesiredCapacity" : "1",
+                "Tags" : [ {
+                    "Key" : "Name",
+                    "Value" : "LoadBalancedWebServer",
+                    "PropagateAtLaunch" : "true"
+                } ]
             }
         }
     }

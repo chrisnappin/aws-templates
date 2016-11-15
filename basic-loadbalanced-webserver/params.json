@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "amiId",
-        "ParameterValue": "ami-051b4d76"
+        "ParameterValue": "ami-f6f1a185"
     },
     {
         "ParameterKey": "instanceType",
