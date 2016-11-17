@@ -16,7 +16,7 @@ And for full details for each action, see:
     
 ##Create a stack
     aws cloudformation create-stack --template-body file://template.json --stack-name MyStackName \
-        --parameters file://parameters.json
+        --parameters file://params.json
 _(see events to view progress)_
     
 ##View stack events

@@ -103,7 +103,7 @@
             "Properties" : {
                 "LaunchConfigurationName" : { "Ref" : "WebServerLaunchConfig" },
                 "MinSize" : "1",
-                "MaxSize" : "2",
+                "MaxSize" : "5",
                 "DesiredCapacity" : "2",
                 "LoadBalancerNames" : [ { "Ref" : "WebServerELB" } ],
                 "Tags" : [ {
@@ -112,6 +112,60 @@
                     "PropagateAtLaunch" : "true"
                 } ],
                 "VPCZoneIdentifier" : [ {"Ref" : "Subnet1"}, {"Ref" : "Subnet2"}, {"Ref" : "Subnet3"} ]
+            }
+        },
+        "WebServerScaleUpPolicy" : {
+            "Type" : "AWS::AutoScaling::ScalingPolicy",
+            "Properties" : {
+                "AdjustmentType" : "ChangeInCapacity",
+                "AutoScalingGroupName" : { "Ref" : "WebServerAutoScalingGroup" },
+                "Cooldown" : "1",
+                "ScalingAdjustment" : "1"
+            }
+        },
+        "WebServerScaleDownPolicy" : {
+            "Type" : "AWS::AutoScaling::ScalingPolicy",
+            "Properties" : {
+                "AdjustmentType" : "ChangeInCapacity",
+                "AutoScalingGroupName" : { "Ref" : "WebServerAutoScalingGroup" },
+                "Cooldown" : "1",
+                "ScalingAdjustment" : "-1"
+            }
+        },
+        "CPUAlarmHigh": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "EvaluationPeriods": "1",
+                "Statistic": "Average",
+                "Threshold": "50",
+                "AlarmDescription": "Alarm if CPU too high",
+                "Period": "300",
+                "AlarmActions": [ { "Ref": "WebServerScaleUpPolicy" } ],
+                "Namespace": "AWS/EC2",
+                "Dimensions": [ {
+                    "Name": "AutoScalingGroupName",
+                    "Value": { "Ref": "WebServerAutoScalingGroup" }
+                } ],
+                "ComparisonOperator": "GreaterThanThreshold",
+                "MetricName": "CPUUtilization"
+            }
+        },
+        "CPUAlarmLow": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "EvaluationPeriods": "1",
+                "Statistic": "Average",
+                "Threshold": "20",
+                "AlarmDescription": "Alarm if CPU too low",
+                "Period": "300",
+                "AlarmActions": [ { "Ref": "WebServerScaleDownPolicy" } ],
+                "Namespace": "AWS/EC2",
+                "Dimensions": [ {
+                    "Name": "AutoScalingGroupName",
+                    "Value": { "Ref": "WebServerAutoScalingGroup" }
+                } ],
+                "ComparisonOperator": "LessThanThreshold",
+                "MetricName": "CPUUtilization"
             }
         },
         "MyVPC" : {
