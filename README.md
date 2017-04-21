@@ -1,4 +1,4 @@
-#AWS CloudFormation Templates
+# AWS CloudFormation Templates
 
 This is a set of CloudFormation Templates for AWS.
 
@@ -7,7 +7,7 @@ I primarily put these together as part of studying for the AWS Solution Architec
 * [Pre-requisites](pre-requisites.md)
 * [Using CloudFormation](using-cloudformation.md)
 
-##Templates
+## Templates
 
 * [Basic Standalone Server](basic-standalone-server/index.md) (using CloudFormation)
 * [S3 Website](s3-website/index.md) (using CloudFormation)
