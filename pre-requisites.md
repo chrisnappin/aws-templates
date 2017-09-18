@@ -6,7 +6,7 @@ Before being able to run these templates, you will need to:
 * Using the IAM section in the AWS web console, create a new user with sufficient permissions to run the templates, and download their access key (ID and secret key)
 * Download, install and add to the `PATH` the following locally:
     * AWS CLI - [Download](http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-msi-on-windows)
-    * Packer v0.11.0 - [Download](https://www.packer.io/downloads.html) (or on MacOSX it can be installed as a `brew` package)
+    * Packer v1.1.0 - [Download](https://www.packer.io/downloads.html) (or on MacOSX it can be installed as a `brew` package)
 * Run `aws configure` (passing the IAM user key details) to setup access
 * Create and download a key pair
 * (if using putty) convert your key pair from `.pem` to `.ppk` using `puttygen`
