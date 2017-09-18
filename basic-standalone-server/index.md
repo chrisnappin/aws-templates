@@ -1,4 +1,4 @@
-#Basic Standalone Server
+# Basic Standalone Server
 
 A single EC2 server instance, located in a new VPC (with gateway and internet routing) and subnet, with a public IP.
 
