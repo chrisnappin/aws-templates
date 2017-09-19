@@ -1,4 +1,4 @@
-#Basic Load Balanced Web Server
+# Basic Load Balanced Web Server
 
 A CloudFormation template to deploy the [basic-standalone-webserver](../basic-standalone-webserver/index.md) 
 AMI as a set of new EC2 instances in a load balanced auto-scaling group, spread across 3 AZs.
@@ -12,7 +12,7 @@ are not - they have no public IP and only accept incoming traffic from the ELB.
 The auto-scaling group scales up by 1 node if average CPU utilisation is above 50% for 5 minutes
 (the free tier monitoring frequency), and down by 1 node if below 20%.
 
-##Building the AMI
+## Building the AMI
 
 Run packer as follows:
 
@@ -21,7 +21,7 @@ Run packer as follows:
     
 _(make a note of the resulting AMI ID)_   
 
-##Deploy the cluster of web servers
+## Deploy the cluster of web servers
 
 * [template.json](template.json)
 * [params.json](params.json)
@@ -37,7 +37,7 @@ Template parameters are:
 * **subnetBlock2** = The CIDR block for subnet 2, must be within **vpcBlock**
 * **subnetBlock3** = The CIDR block for subnet 3, must be within **vpcBlock**
 
-##Injecting Load
+## Injecting Load
 
 * [WebServerTestPlan.jmx](WebServerTestPlan.jmx) - example JMeter test plan
 
