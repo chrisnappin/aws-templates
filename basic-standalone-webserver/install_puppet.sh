@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-sudo yum update
+# update O/S packages
+sudo yum update -y
+
+# install Puppet v3.x
 sudo yum install -y puppet3

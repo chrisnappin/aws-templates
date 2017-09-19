@@ -1,11 +1,11 @@
-#Basic Standalone Web Server
+# Basic Standalone Web Server
 
 Includes:
 
 * An AMI automatically built using Packer, running a Puppet script to install NGINX
 * A CloudFormation template to deploy that AMI as a new EC2 instance in a new VPC
 
-##Building the AMI
+## Building the AMI
 * [Packer configuration](nginx-packer-config.json)
 
 This uses the **amazon-ebs** builder, starting from the Amazon Linux AMI, and two provisioners:
@@ -22,7 +22,7 @@ Run packer as follows:
     
 _(make a note of the resulting AMI ID)_   
 
-##Deploy the new EC2 instance
+## Deploy the new EC2 instance
 
 * [template.json](template.json)
 * [params.json](params.json)
